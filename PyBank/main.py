@@ -12,11 +12,13 @@ with open(csvpath, encoding='UTF-8') as csvfile:
     for row in csvreader:
         row_count += 1
 
-print("\nFinancial Analysis\n")
-
-print("----------------------------")
-
+print("\nFinancial Analysis\n\n")
+print("-----------------------------------------------------")
 print(f"\nTotals month: {row_count}\n")
+
+output = "\nFinancial Analysis\n\n"
+output += "--------------------------------------------------\n"
+output += f"\nTotals month: {row_count}\n\n"
 
 cwd = os.path.dirname(os.path.abspath(__file__))
 csvpath = os.path.join(cwd, "Resources", "budget_data.csv")
@@ -32,7 +34,8 @@ with open(csvpath, encoding='UTF-8') as csvfile:
     for row in csvreader: #looping through list to get total value
         value = int(row[1])
         total_sum += value
-print(f'Total : ${total_sum}\n')
+print(f'Total : ${total_sum}\n\n')
+output += f'Total : ${total_sum}\n\n'
 
 cwd = os.path.dirname(os.path.abspath(__file__))
 
@@ -53,7 +56,8 @@ with open(csvpath, encoding='UTF-8') as csvfile:
         change = values[i] - values[i - 1]  
         changes.append(change)
 average_change = sum(changes) / len(changes)
-print(f"Average Change: ${average_change:.2f}")
+print(f"Average Change: ${average_change:.2f}\n")
+output += f"Average Change: ${average_change:.2f}\n"
 
 
 cwd = os.path.dirname(os.path.abspath(__file__))
@@ -87,11 +91,19 @@ with open(csvpath, encoding='UTF-8') as csvfile:
         max_date = dates[max_index]
         min_date = dates[min_index]
        
-print(f'\nGreatest Increase in Profits: {max_date} (${max_change:.0f})\n')
-print(f'Greatest Decrease in Profits: {min_date} (${min_change:.0f})\n')
+print(f'\nGreatest Increase in Profits: {max_date} (${max_change:.0f})\n\n')
+print(f'\nGreatest Decrease in Profits: {min_date} (${min_change:.0f})\n\n')
 
+output +=f'\nGreatest Increase in Profits: {max_date} (${max_change:.0f})\n\n'
+output +=f'Greatest Decrease in Profits: {min_date} (${min_change:.0f})\n\n'
 
+csvpath = os.path.join(cwd, "Analysis", "output.txt")
 
+# with clause for write priveleges to add results in text file. 
+with open(csvpath, "w") as file:
+    file.write(output)
+
+print("Output file 'output.txt' created successfully!") 
  
       
 
