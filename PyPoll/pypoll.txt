@@ -38,7 +38,7 @@ with open(csvpath, encoding='UTF-8') as csvfile:
     vote_count = 0
     winner = []
 
-    for i in csvreader: #looping through second column to count votes for each candidate and add them to respective list using if condition
+    for i in csvreader: #looping through second column to count votes for each candidate using if condition
         vote = i[2]
         if vote == 'Charles Casper Stockham':
             charles.append(vote)
@@ -62,32 +62,5 @@ elif len(raymon) > len(charles) and len(diana):
     print("Winner : Raymon Anthony Doane")
 
 print("----------------------------------------------------")
-    
-            
-
-
-    
-
-              
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# def count_of_votes(election_data):
-#     header = next(csvreader)
-#     candidate = row[2]
-
    
     
